@@ -1,0 +1,137 @@
+@import "./global.scss";
+@import "node_modules/locomotive-scroll/dist/locomotive-scroll";
+
+* {
+  .link {
+    text-decoration: none;
+    color: inherit;
+  }
+}
+
+html {
+  // This defines what 1rem is
+  font-size: 67.5%; // this is the result of 10px/16px = 62.5%, 1rem = 10px
+
+  // asks if width < 1200px?
+  @include respond(tabLand) {
+    font-size: 56.25%; // 1 rem = 9px, 9/16 = 56.25%
+  }
+
+  // asks if  width < 900px?
+  @include respond(tabPort) {
+    font-size: 62.5%; // 1 rem = 8px, 8/16 = 50%
+  }
+
+  // asks if  width < 600px?
+  // @include respond(phone) {
+  //   font-size: 30%; // 1rem = 4.8px
+  // }
+
+  // asks if width > 1800px?
+  @include respond(bigDesktop) {
+    font-size: 75%; // 1 rem = 12px, 12/16 = 75%
+  }
+}
+
+.theme {
+  transition: all 3s ease;
+}
+
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: lightgray;
+}
+
+::-webkit-scrollbar-thumb {
+  background-image: linear-gradient(rgba(255, 0, 0, 0.825), rgb(0, 0, 0));
+  border-radius: 25px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-image: linear-gradient();
+}
+
+$themes: (
+  light: (
+    textColor: $mainBlack,
+    bg: $mainBackground,
+    logo: $secondaryColor,
+    bgSoft: #f6f3f3,
+    textColorSoft: #555,
+    border: lightgray,
+    hamburger: $mainBlack,
+    bgDark: lightgray,
+    bgFooter: #f6f6f6,
+    textColorOpposite: white,
+    toggleBg: transparent,
+  ),
+  dark: (
+    textColorOpposite: $mainBlack,
+    bgFooter: #161616,
+    bgDark: #0d0d0d,
+    textColor: whitesmoke,
+    hamburger: whitesmoke,
+    bg: #232323,
+    logo: white,
+    bgSoft: #333,
+    textColorSoft: lightgray,
+    border: #444,
+    toggleBg: #14dc4b,
+  ),
+);
+
+@mixin themify($themes) {
+  @each $theme, $map in $themes {
+    .theme-#{$theme} & {
+      $theme-map: () !global;
+      @each $key, $submap in $map {
+        $value: map-get(map-get($themes, $theme), "#{$key}");
+        $theme-map: map-merge(
+          $theme-map,
+          (
+            $key: $value,
+          )
+        ) !global;
+      }
+      @content;
+      $theme-map: null !global;
+    }
+  }
+}
+
+@function themed($key) {
+  @return map-get($theme-map, $key);
+}
+
+// Lama dev
+
+// $mobileWidth: 600px;
+// $iPadWidth: 900px;
+// $laptopWidth: 1200px;
+// $desktopWidth: 1800px;
+
+// @mixin desktop {
+//   @media (max-width: #{$desktopWidth}) {
+//     @content;
+//   }
+// }
+// @mixin laptop {
+//   @media (max-width: #{$laptopWidth}) {
+//     @content;
+//   }
+// }
+
+// @mixin iPad {
+//   @media (max-width: #{$iPadWidth}) {
+//     @content;
+//   }
+// }
+
+// @mixin mobile {
+//   @media (max-width: #{$mobileWidth}) {
+//     @content;
+//   }
+// }

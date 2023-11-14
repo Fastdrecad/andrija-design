@@ -1,0 +1,54 @@
+@import "../../global.scss";
+
+.successContainer {
+  position: relative;
+  flex: 1 1 0%;
+  min-height: 100vh;
+  background-color: rgb(47, 47, 47);
+
+  .successWrapper {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: baseline;
+    justify-content: center;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: 25vh;
+
+    .successMessage {
+      border-radius: 7px;
+      padding: 1.5rem 6rem 1.5rem 1.5rem;
+      background-color: white;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: baseline;
+
+      .successTitle {
+        margin-bottom: 1rem;
+        font-size: 2rem;
+      }
+
+      p {
+        margin-bottom: 30px;
+        font-size: 1.25rem;
+      }
+
+      .back-to {
+        color: gray;
+        font-weight: 600;
+        font-size: 1.25rem;
+
+        span {
+          text-decoration: none;
+        }
+
+        &:hover {
+          color: red;
+        }
+      }
+    }
+  }
+}

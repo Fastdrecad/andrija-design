@@ -1,0 +1,219 @@
+@import "../../global.scss";
+@import "../../style.scss";
+
+.intro {
+  @include themify($themes) {
+    background-color: themed("bg");
+    display: flex;
+    height: calc(100dvh - $navbarHeight);
+
+    // @include mobile {
+    //   flex-direction: column;
+    //   align-items: center;
+    //   height: calc(100dvh - 70px);
+    // }
+
+    .leftIntro {
+      flex: 0.5;
+      position: relative;
+      overflow: hidden;
+
+      // @include respond(tabPort) {
+      //   top: 0;
+      // }
+
+      .imgContainer {
+        height: 1160px;
+        width: 1160px;
+        border-radius: 50%;
+        background-image: linear-gradient(
+          -45deg,
+          #ee7752,
+          #e73c7e,
+          #23a6d5,
+          #23d5ab
+        );
+        animation: bgAnimation 10s infinite alternate;
+        background-size: 400%;
+        display: flex;
+        align-items: flex-end;
+        justify-content: center;
+        float: right;
+
+        img {
+          height: 100%;
+          line-height: 0;
+          position: relative;
+
+          // @include mobile {
+          //   height: 25%;
+          //   margin-top: -10px;
+          // }
+        }
+
+        // @include mobile {
+        //   align-items: flex-start;
+        // }
+      }
+
+      // @include mobile {
+      //   height: 50%;
+      // }
+    }
+
+    .rightIntro {
+      flex: 0.5;
+      position: relative;
+
+      .wrapperIntro {
+        width: 100%;
+        height: 100%;
+        padding-left: 8.3rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        opacity: 0;
+        transition: all 1s ease;
+        transform: translateX(650px);
+
+        // @include mobile {
+        //   padding-top: 90px;
+        //   padding-left: 0;
+        //   justify-content: start;
+        // }
+
+        h1 {
+          font-size: rem(80);
+          font-weight: 300;
+          margin-bottom: rem(40);
+          padding-bottom: rem(40);
+          position: relative;
+          display: inline-block;
+
+          // @include mobile {
+          //   font-size: 30px;
+          //   margin-bottom: 20px;
+          //   padding-bottom: 20px;
+          // }
+
+          span {
+            font-size: inherit;
+            font-weight: 600;
+          }
+
+          &::after {
+            content: "";
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: rem(100);
+            height: rem(20);
+            background: url("../../assets/RedCurvedLine.png") no-repeat;
+            background-size: rem(100) auto;
+
+            // @include mobile {
+            //   background-size: 60px auto;
+            //   left: 50%;
+            //   transform: translateX(calc(-50% + 20px));
+            // }
+          }
+        }
+
+        // if decide to use it optionally (look at Intro.jsx component)
+        h2 {
+          font-size: rem(55);
+          font-weight: 500;
+        }
+
+        h3 {
+          font-size: rem(50);
+          font-weight: 500;
+
+          // @include mobile {
+          //   font-size: 25px;
+          //   text-align: center;
+          // }
+
+          span {
+            font-weight: inherit;
+            font-size: inherit;
+            color: $secondaryColor;
+          }
+
+          .ityped-cursor {
+            animation: 2s blink infinite;
+          }
+
+          @keyframes blink {
+            50% {
+              opacity: 1;
+            }
+            100% {
+              opacity: 0;
+            }
+          }
+        }
+      }
+
+      .wrapperIntro {
+      }
+
+      a {
+        position: absolute;
+        bottom: 50px;
+        left: 40%;
+        transition: all 0.1s ease-in;
+
+        .arrowIntro {
+          font-size: 50px;
+          color: themed("textColor");
+          animation: bounce ease-in-out 1s infinite;
+        }
+
+        @keyframes bounce {
+          0% {
+            translate: 0 0;
+          }
+          50% {
+            translate: 0 10px;
+          }
+          100% {
+            translate: 0 0;
+          }
+        }
+      }
+    }
+  }
+
+  @keyframes curvedRedLine {
+    from {
+      width: 0;
+    }
+    to {
+      width: rem(100);
+    }
+  }
+
+  @keyframes bgAnimation {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+}
+
+.sideIn {
+  transform: translateX(0) !important;
+  opacity: 1 !important;
+
+  h1 {
+    &::after {
+      animation: curvedRedLine ease-in-out 1s;
+    }
+  }
+}

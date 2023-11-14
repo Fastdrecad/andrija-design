@@ -1,0 +1,61 @@
+@import "../../global.scss";
+@import "../../style.scss";
+
+.playBtn {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+
+  .playIcon {
+    width: 120px;
+    height: 120px;
+    color: white;
+    transform: translateY(-3px);
+
+    svg {
+      margin: 0;
+      padding: 0;
+    }
+
+    @include respond(phone) {
+      transform: translateY(10px);
+      width: 70px;
+      height: 70px;
+    }
+
+    &:visited,
+    &:link {
+      text-transform: uppercase;
+      text-decoration: none;
+      padding: 15px 40px;
+      display: inline-block;
+      border-radius: 100px;
+      position: absolute;
+    }
+
+    &:hover {
+      outline: none;
+      border-color: $secondaryColor;
+      box-shadow: 0 0 10px 0 $buttonColor inset, 0 0 10px 4px $buttonColor;
+      border-radius: 50%;
+      transform: translateY(-3px) scale(1.05);
+    }
+    &:active {
+      transform: translateY(0px) scale(0.9);
+      color: white;
+      box-shadow: 0 0 5px 0 $buttonColor inset, 0 0 5px 2px $buttonColor;
+      background-color: $secondaryColor;
+    }
+  }
+}
+
+.playBtn {
+  transform: translateX(-250px);
+  transition: transform 1s ease;
+  opacity: 0;
+}
+
+.sideRight {
+  opacity: 1 !important;
+  transform: translateX(0) !important;
+}

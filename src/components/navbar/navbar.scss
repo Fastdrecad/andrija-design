@@ -1,0 +1,199 @@
+@import "../../global.scss";
+@import "../../style.scss";
+
+.navbar {
+  @include themify($themes) {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    height: $navbarHeight;
+    box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.16);
+    z-index: 4;
+
+    .ellipses {
+      width: 100%;
+      height: 120px;
+      background-color: rgba(0, 0, 0, 0);
+      position: absolute;
+      left: 50%;
+      bottom: 0;
+      transform: translateX(-50%);
+      border-radius: 50%;
+      box-shadow: 0px 0px 40px 0px rgba(0, 0, 0, 0.5);
+      z-index: -3;
+
+      &::after {
+        content: "";
+        width: 105%;
+        height: 300px;
+        position: absolute;
+        left: 50%;
+        bottom: 180px;
+        transform: translateX(-50%);
+      }
+    }
+
+    .navbarContainer {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 50px;
+      height: 100%;
+      background-color: themed("bgFooter");
+
+      .hamburgerMenu {
+        top: 35px;
+        right: 50px;
+        margin-left: rem(30);
+        display: none;
+      }
+
+      @include respond(tabPort) {
+        .hamburgerMenu {
+          position: absolute;
+          right: 40px;
+          &:has(input:focus-visible)::before,
+          &:has(input:focus-visible)::after,
+          & input:focus-visible {
+            border: 1px solid white;
+          }
+
+          & {
+            display: flex;
+            flex-direction: column;
+            gap: $hamburger-gap;
+            width: max-content;
+            cursor: pointer;
+          }
+
+          & input,
+          &::before,
+          &::after {
+            content: "";
+            width: $bar-width;
+            height: $bar-height;
+            background-color: themed("hamburger");
+            transform-origin: left center;
+            border-radius: 9px;
+            transition: opacity $animation-timing, width $animation-timing,
+              rotate $animation-timing, translate $animation-timing,
+              background-color $animation-timing;
+          }
+
+          &:has(input:checked)::before {
+            rotate: 45deg;
+            width: $x-width;
+            translate: 0 calc($bar-height / -2);
+          }
+
+          &:has(input:checked)::after {
+            rotate: -45deg;
+            width: $x-width;
+            translate: 0 calc($bar-height / 2);
+          }
+
+          & input {
+            appearance: none;
+            padding: 0;
+            margin: 0;
+            outline: none;
+            pointer-events: none;
+          }
+
+          & input:checked {
+            opacity: 0;
+            width: 0;
+          }
+        }
+      }
+    }
+
+    .logoContainer {
+      flex: 2;
+      line-height: 0%;
+      margin-left: 30px;
+      filter: drop-shadow(-2px 4px 4px rgba(26, 26, 26, 0.75));
+
+      .logo {
+        .logoImg {
+          width: 80px;
+
+          @include respond(phone) {
+            width: 70px;
+          }
+
+          &:visited,
+          &:link {
+            text-transform: uppercase;
+            text-decoration: none;
+            padding: rem(15) rem(40);
+            transition: all 0.2s;
+          }
+          &:hover {
+            filter: drop-shadow(-2px 4px 4px #ed20238e);
+            transform: translateY(-2px);
+          }
+          &:active {
+            transform: translateY(-1px);
+            filter: drop-shadow(-1px 2px 1px rgba(26, 26, 26, 0.75));
+          }
+        }
+      }
+
+      @include respond(phone) {
+        margin-left: 0;
+      }
+    }
+
+    .menuContainer {
+      @include respond(tabPort) {
+        display: none;
+        flex: 0;
+      }
+
+      .menuList {
+        display: flex;
+        padding: 0;
+        list-style: none;
+        align-items: center;
+        justify-content: center;
+
+        .menuListItem {
+          margin-inline: 5px;
+
+          .link {
+            text-decoration: none;
+            background-color: rgb(228, 228, 228);
+            transition: all 0.2s linear;
+            color: #303236;
+            font-size: 14px;
+            text-transform: capitalize;
+            font-weight: 600;
+            padding: 5px 15px;
+            white-space: nowrap;
+            border-radius: 30px;
+
+            &:hover {
+              background-color: rgb(193, 193, 193);
+            }
+
+            &.active {
+              color: white;
+              background-color: $primaryColor;
+            }
+          }
+        }
+      }
+    }
+
+    .modeIcon {
+      color: themed("textColor");
+      cursor: pointer;
+
+      &:active {
+        transform: rotate(-45deg);
+        transition: all 800ms ease;
+      }
+    }
+  }
+}

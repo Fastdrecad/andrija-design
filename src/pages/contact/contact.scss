@@ -1,0 +1,308 @@
+@import "../../global.scss";
+@import "../../style.scss";
+
+.contactPage {
+  @include themify($themes) {
+    flex: 1 1 0%;
+    width: 100%;
+
+    min-height: calc(100dvh - $footerHeight - $navbarHeight);
+    position: relative;
+    margin-top: $navbarHeight;
+    background-color: themed("bg");
+    overflow: hidden;
+
+    .contactHeader {
+      position: relative;
+      width: 100%;
+      min-height: calc(100dvh - $navbarHeight);
+      background-color: themed("bg");
+
+      @include respond(tabLand) {
+        min-height: 90vh;
+      }
+      @include respond(tabPort) {
+        min-height: 95vh;
+      }
+
+      > svg {
+        height: 100%;
+        position: absolute;
+        top: 50%;
+        left: 50.5%;
+        transform: translate(-50%, -50%);
+        fill: rgb(130, 130, 130);
+        opacity: 0.4;
+        filter: drop-shadow(1px 1px 1px rgba(134, 134, 134, 0.5));
+      }
+
+      .formContainer {
+        width: 80vw;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -60%);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        @include respond(tabPort) {
+          width: 90vw;
+        }
+
+        .titleContainer {
+          color: themed("textColor");
+
+          h2 {
+            font-weight: 500;
+            font-size: rem(40);
+            text-align: center;
+            text-transform: uppercase;
+            margin-bottom: rem(20);
+            margin-top: rem(80);
+
+            @include respond(tabLand) {
+              margin-top: 0;
+            }
+          }
+
+          .formSubtitle {
+            text-align: center;
+            font-size: 1.7rem;
+            text-transform: none;
+            margin-bottom: 2rem;
+
+            @include respond(tabLand) {
+              font-size: 2rem;
+            }
+
+            @include respond(phone) {
+              font-size: 1.5rem;
+            }
+          }
+        }
+
+        .form {
+          text-align: center;
+          display: flex;
+          flex-direction: column;
+          height: 40vh;
+          width: 50vw;
+
+          .formRow {
+            margin-bottom: rem(5);
+
+            .formInput {
+              width: 100%;
+              background-color: #ffffffd3;
+              outline: none;
+              font-size: 1.7rem;
+              font-weight: 300;
+              padding: rem(15);
+              margin: rem(10) auto;
+              border-radius: 7px;
+              border: 1px solid;
+              resize: vertical;
+              font-weight: 500;
+
+              &:focus {
+                background-color: rgb(242, 253, 253);
+              }
+
+              @include respond(tabLand) {
+                font-size: 1.8rem;
+              }
+            }
+
+            textarea {
+              width: 100%;
+              height: 10em;
+            }
+          }
+
+          .btnSend {
+            text-align: center;
+            margin-inline: auto;
+            background-color: themed("hamburger");
+            color: themed("textColorOpposite");
+            padding: 10px 30px;
+            border-radius: 50px;
+            font-size: 24px;
+            border: none;
+            font-weight: 700;
+            letter-spacing: 2px;
+            cursor: pointer;
+            margin-top: 20px;
+            transition: all 0.2s ease-in-out;
+
+            &:hover {
+              outline: none;
+              border-color: $secondaryColor;
+              box-shadow: 0 0 10px 0 $secondaryColor inset,
+                0 0 10px 4px $secondaryColor;
+            }
+          }
+          @include respond(tabLand) {
+            width: 65vw;
+          }
+          @include respond(tabPort) {
+            width: 75vw;
+          }
+          @include respond(phone) {
+            width: 90vw;
+          }
+        }
+      }
+    }
+
+    .footerWrapper {
+      margin-top: -80px;
+      width: 100%;
+
+      @include respond(tabLand) {
+        margin-top: -100px;
+      }
+
+      .contactFooter {
+        position: relative;
+
+        .imgContainer {
+          overflow: hidden;
+          z-index: 1;
+        }
+
+        .imgContainer {
+          position: relative;
+
+          &::after {
+            /* this guy helps give the right amount of padding! */
+            content: "";
+            display: block;
+            aspect-ratio: 4 / 1;
+            /* this should be your triangle's actual ratio */
+          }
+
+          .backgroundImg {
+            background-color: #454545;
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            z-index: 0;
+            clip-path: polygon(
+              0 0,
+              100% calc(100% - (100% / tan(50deg))),
+              100% 100%,
+              0 100%
+            );
+
+            @include respond(phone) {
+            }
+
+            // gray line
+            &::after {
+              content: "";
+              height: rem(70);
+              width: 100%;
+              float: left;
+              background: #313131;
+              position: absolute;
+              left: 0;
+              bottom: 80%;
+              transform: skewY(3.5deg);
+              z-index: 3;
+            }
+
+            img {
+              width: 100%;
+              height: 100%;
+              object-fit: cover;
+              mix-blend-mode: multiply;
+            }
+          }
+
+          @include respond(tabLand) {
+            height: 50vh;
+          }
+
+          @include respond(tabPort) {
+            height: 32vh;
+          }
+        }
+
+        .frontTitle {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -30%);
+          z-index: 3;
+          width: 80%;
+
+          .frontText {
+            color: white;
+            text-align: center;
+            text-transform: capitalize;
+            font-size: 3.5rem;
+            font-weight: 300;
+            display: block;
+            margin-bottom: rem(50);
+            opacity: 0;
+            transform: translateY(100px);
+            transition: all 1s ease;
+
+            @include respond(tabLand) {
+              font-size: 3.25rem;
+            }
+            @include respond(tabPort) {
+              font-size: 2.75rem;
+            }
+
+            @include respond(phone) {
+              font-size: 1.75rem;
+            }
+
+            &::after {
+              content: "";
+              position: absolute;
+              bottom: rem(-50);
+              left: 50%;
+              margin-left: rem(-50);
+              width: rem(100);
+              height: rem(20);
+              background: url("../../assets/RedCurvedLine.png") no-repeat;
+              background-size: rem(100) auto;
+
+              @include respond(tabLand) {
+                background-size: rem(100) auto;
+              }
+
+              @include respond(phone) {
+                background-size: rem(60) auto;
+              }
+            }
+
+            &.fadeIn {
+              transform: translateX(0) !important ;
+              opacity: 1 !important;
+
+              &::after {
+                animation: curvedRedLine ease-in-out 1s;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  @keyframes curvedRedLine {
+    from {
+      width: 0;
+    }
+    to {
+      width: rem(100);
+    }
+  }
+}

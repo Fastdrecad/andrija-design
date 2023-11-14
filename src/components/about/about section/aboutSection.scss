@@ -1,0 +1,221 @@
+@import "../../../global.scss";
+@import "../../../style.scss";
+
+.aboutSection {
+  @include themify($themes) {
+    background-color: themed("bg");
+    width: 100%;
+    overflow: hidden;
+
+    .aboutContainer {
+      width: 80%;
+      margin: 0 auto;
+      position: relative;
+
+      .aboutPart {
+        position: relative;
+
+        .aboutContent {
+          width: 100%;
+          position: relative;
+          padding-top: 300px;
+          padding-left: 70px;
+          z-index: 0;
+          height: auto;
+
+          @include respond(tabLand) {
+            width: calc(100% - 200px);
+            padding-left: 0;
+            margin-bottom: 200px;
+            padding-top: 150px;
+          }
+
+          @include respond(tabPort) {
+            width: 100%;
+          }
+          @include respond(phone) {
+            width: 100%;
+          }
+
+          .aboutText {
+            position: relative;
+
+            .aboutTitle {
+              font-size: 4.375rem;
+              font-weight: 300;
+              line-height: 80px;
+              position: relative;
+              padding-bottom: 50px;
+              margin-bottom: 50px;
+              opacity: 0;
+              transform: translateX(-300px);
+              transition: all 1s ease;
+
+              strong {
+                overflow: hidden;
+                display: block;
+                font-weight: 500;
+                margin-left: -6px;
+              }
+
+              &::after {
+                content: "";
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                width: rem(100);
+                height: rem(20);
+                background: url("../../../assets/RedCurvedLine.png") no-repeat;
+                background-size: rem(100) auto;
+
+                @include respond(tabPort) {
+                  background-size: rem(80) auto;
+                }
+              }
+
+              @include respond(tabPort) {
+                line-height: 5rem;
+              }
+              @include respond(tabPort) {
+                font-size: 4rem;
+              }
+            }
+
+            .aboutDescText {
+              opacity: 0;
+              transform: translateX(-300px);
+              transition: all 1s ease;
+              position: relative;
+              z-index: 1;
+              margin-bottom: 200px;
+
+              p {
+                font-size: rem(20);
+                line-height: rem(32);
+              }
+
+              ul {
+                font-size: rem(20);
+                line-height: rem(32);
+                list-style: disc outside;
+                margin-bottom: rem(20);
+
+                li {
+                  padding-left: rem(30);
+                  line-height: rem(32);
+                  list-style: none;
+                  position: relative;
+
+                  &::before {
+                    content: "";
+                    width: rem(12);
+                    height: rem(12);
+                    position: absolute;
+                    background-color: $secondaryColor;
+                    left: 0;
+                    top: rem(11);
+                    border-radius: 50%;
+                  }
+                }
+              }
+
+              // @include respond(tabLand) {
+              //   padding-bottom: 15rem;
+              // }
+            }
+
+            // @include respond(tabLand) {
+            //   bottom: 0;
+            // }
+
+            // @include respond(tabPort) {
+            //   right: 15%;
+            // }
+
+            // @include respond(phone) {
+            //   right: 30%;
+            // }
+          }
+
+          .aboutSignature {
+            position: absolute;
+            font-size: 120px;
+            right: 25%;
+            bottom: -10%;
+            transform: translateX(300px);
+            transition: all 2s ease 1s;
+            opacity: 0;
+
+            span {
+              text-align: right;
+              font-family: "Genit";
+              font-weight: normal;
+            }
+          }
+
+          // @include respond(tabPort) {
+          //   padding-top: 10rem;
+          // }
+        }
+
+        .penImage {
+          width: 45%;
+          position: absolute;
+          top: -2%;
+          right: -10%;
+          background-color: themed("bg");
+
+          img {
+            width: 100%;
+          }
+
+          @include respond(tabPort) {
+            top: 30%;
+            right: auto;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 95%;
+            opacity: 0.2;
+          }
+        }
+      }
+
+      @include respond(tabLand) {
+        width: 95%;
+      }
+    }
+  }
+
+  @keyframes curvedRedLine {
+    from {
+      width: 0;
+    }
+    to {
+      width: 100px;
+    }
+  }
+
+  .aboutTitle,
+  .aboutDescText {
+    .fadeIn {
+      transform: translateX(0) !important ;
+      opacity: 1 !important;
+    }
+  }
+
+  .aboutSignature {
+    .fadeIn {
+      transform: translateX(0) !important ;
+      opacity: 1 !important;
+    }
+  }
+
+  .fadeIn {
+    transform: translateX(0) !important ;
+    opacity: 1 !important;
+
+    &::after {
+      animation: curvedRedLine ease-in-out 1s;
+    }
+  }
+}

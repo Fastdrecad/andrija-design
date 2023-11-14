@@ -1,0 +1,99 @@
+$mainBackground: #ffffff;
+$secondaryBackground: #f6f6f6;
+$contactBackground: #eeeeee;
+$footerBackground: #f6f6f6;
+$frameBackground: #3a3b3c;
+$mainOverlay: rgba(35, 10, 36, 0.4);
+$mainBlack: #222;
+$primaryColor: #303236;
+$secondaryColor: #ed2024;
+$buttonColor: #d4d4d4;
+$lightShadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.16);
+$mainTransition: all 0.2s linear;
+$navbarHeight: 90px;
+$navbarHeightMobile: 70px;
+$footerHeight: 220px;
+$zinc-950: #09090b;
+$border: 10px solid #535455;
+
+// hamburger menu
+$foreground: #333;
+$bar-width: 25px;
+$bar-height: 2px;
+$hamburger-gap: 5px;
+$hamburger-margin: 10px;
+$animation-timing: 300ms ease-in-out;
+$hamburger-height: calc(($bar-height * 3) + ($hamburger-gap * 2));
+$x-width: calc($hamburger-height * 1.41421356237);
+
+@function stripUnit($value) {
+  @return calc($value / ($value * 0 + 1));
+}
+
+// @function rem($pxValue) {
+//   @return #{stripUnit($pxValue) / stripUnit($html-font-size)}rem;
+// }
+
+@function rem($px, $base: 12) {
+  @return #{calc(stripUnit($px) / stripUnit($base))}rem;
+}
+@function px($px, $base: 12) {
+  @return $base * $px;
+}
+$space: 16px;
+
+$html-font-size: 16px;
+
+@font-face {
+  font-family: "Genit";
+  src: url(./assets/Genit.otf);
+}
+
+// MEDIA QUERY MANAGER
+/*
+0 - 600px:    Phone
+600 - 900px:   Tablet Portrait
+900 - 1200px:  Tablet Landscape
+[1200 - 1800]  is where our normal styles apply
+1800px + :     Big Desktop 
+*/
+
+/* 
+$breakpoint argument choices:
+-phone
+-tabPort
+-tabLand
+-bigDesktop
+
+ORDER: Base + typography > general layout + grid > page layout > components
+
+*/
+
+// 1em = 16px
+$phone: 37.5em; // = 600px
+$tabPort: 56.25em; // = 900px
+$tabLand: 75em; // = 1200px
+$bigDesktop: 112.5em; // = 1800px
+
+@mixin respond($breakpoint) {
+  @if $breakpoint == phone {
+    @media (max-width: #{$phone}) {
+      @content;
+    }
+  }
+  @if $breakpoint == tabPort {
+    @media (max-width: #{$tabPort}) {
+      @content;
+    }
+  }
+  @if $breakpoint == tabLand {
+    @media (max-width: #{$tabLand}) {
+      @content;
+    }
+  }
+  @if $breakpoint == bigDesktop {
+    @media (min-width: #{$bigDesktop}) {
+      @content;
+    }
+  }
+}

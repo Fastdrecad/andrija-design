@@ -1,0 +1,53 @@
+@import "../../global.scss";
+@import "../../style.scss";
+
+.sidebarContainer {
+  @include themify($themes) {
+    .sidebar {
+      height: 100%;
+      width: 100vw;
+      position: fixed;
+      background-color: themed("bg");
+      display: flex;
+      text-align: center;
+      align-items: center;
+      flex-direction: column;
+      transform: translateX(-100%);
+      transition: all $animation-timing;
+      z-index: 3;
+
+      &.showSidebar {
+        transform: translateX(0);
+      }
+
+      .links {
+        margin-bottom: 10px;
+        list-style: none;
+        width: 100%;
+        margin-top: 150px;
+      }
+
+      .links a {
+        text-decoration: none;
+        display: block;
+        font-weight: 600;
+        text-align: center;
+        font-size: 20px;
+        text-transform: capitalize;
+        padding: 10px 15px;
+        color: themed("textColor");
+        transition: $animation-timing ease-in-out;
+        letter-spacing: 1px;
+      }
+
+      .links a:hover {
+        background: themed("textColorSoft");
+        color: themed("bg");
+      }
+      .links a:active {
+        background: gray;
+        color: white;
+      }
+    }
+  }
+}

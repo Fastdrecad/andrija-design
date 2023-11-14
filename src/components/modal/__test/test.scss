@@ -1,0 +1,184 @@
+@import "../../../global.scss";
+@import "../../../style.scss";
+
+.bg {
+  position: fixed;
+  // inset: 0;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background-color: rgb(2, 2, 2);
+  opacity: 0.8;
+  z-index: 999;
+}
+
+.modal {
+  display: block;
+  position: fixed;
+  inset: 100px 20% auto;
+  z-index: 1000;
+
+  .modalContent {
+    position: relative;
+    margin: auto;
+    padding: 0;
+    max-width: 1200px;
+
+    .slides {
+      position: relative;
+      line-height: 0;
+      .numberText {
+        color: #f2f2f2;
+        font-size: 18px;
+        padding: 8px 12px;
+        position: absolute;
+        top: 10px;
+      }
+
+      img {
+        width: 100%;
+      }
+      .prev,
+      .next {
+        user-select: none;
+        cursor: pointer;
+        position: absolute;
+        left: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        width: auto;
+        padding: rem(16);
+        color: white;
+        font-weight: bold;
+        font-size: 35px;
+        transition: 0.6s ease;
+        border-radius: 0 3px 3px 0;
+        text-decoration: none;
+        background-color: rgba(0, 0, 0, 0.3);
+        border: none;
+
+        &:hover {
+          background-color: red;
+        }
+
+        &:active {
+          color: red;
+        }
+      }
+
+      .next {
+        border-radius: 3px 0 0 3px;
+        left: auto;
+        right: 0;
+      }
+    }
+
+    .captionContainer {
+      text-align: center;
+      background-color: rgba(71, 71, 71, 0.95);
+      padding: 10px;
+      color: white;
+      width: 100%;
+      text-align: left;
+
+      p {
+        font-size: 14px;
+      }
+    }
+
+    .columnBoxContainer {
+      margin-top: 10px;
+      margin-inline: auto;
+      display: flex;
+      position: relative;
+      align-items: center;
+      min-height: 90px;
+      align-items: center;
+      justify-content: center;
+
+      .prevDemo {
+        background: url("../../assets/arrow.png") no-repeat;
+        background-size: auto 30px !important;
+        background-position: center;
+        width: 30px;
+        height: 30px;
+        border: none;
+        transform: rotate(180deg);
+        cursor: pointer;
+        margin-right: 10px;
+      }
+
+      .nextDemo {
+        margin-left: 10px;
+        background: url("../../assets/arrow.png") no-repeat;
+        background-size: auto 30px !important;
+        background-position: center;
+        width: 30px;
+        height: 30px;
+        border: none;
+        cursor: pointer;
+      }
+
+      .columnBox {
+        background-color: transparent;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden;
+        flex-wrap: wrap;
+        left: 50%;
+        max-width: 100%;
+
+        .column {
+          display: inline-block;
+          width: 102px;
+          height: 102px;
+          border: 2px solid rgb(36, 36, 36);
+          background: #222;
+
+          .demo {
+            width: 100%;
+            object-fit: cover;
+            height: 100%;
+            display: block;
+            opacity: 0.6;
+
+            &:hover {
+              opacity: 1;
+            }
+
+            &.active {
+              opacity: 1;
+              outline: 2px solid rgb(174, 174, 174);
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.cursor {
+  cursor: pointer;
+}
+
+.close {
+  color: white;
+  position: fixed;
+  top: 0;
+  right: 2%;
+  font-size: 55px;
+  font-weight: bold;
+  padding: 0;
+  margin: 0;
+  z-index: 9999;
+
+  &:active {
+    color: red;
+  }
+}
+
+.overflow-hidden {
+  overflow: hidden;
+}

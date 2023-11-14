@@ -1,0 +1,64 @@
+@import "../../global.scss";
+@import "../../style.scss";
+
+#button {
+  width: 58px;
+  height: 58px;
+  bottom: 60px;
+  right: 60px;
+  box-sizing: border-box;
+  appearance: none;
+  text-align: center;
+  border-radius: 4px;
+  position: fixed;
+  cursor: pointer;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: transparent;
+  box-shadow: 0 0 40px 40px $buttonColor inset, 0 0 0 0 $buttonColor;
+  border-color: $buttonColor;
+  border: 2px;
+  visibility: hidden;
+  opacity: 0;
+  transition: all 150ms ease-in-out;
+  z-index: 2;
+
+  @include respond(tabPort) {
+    width: 50px;
+    height: 50px;
+    bottom: 20px;
+    right: 20px;
+  }
+
+  @include respond(phone) {
+    width: 40px;
+    height: 40px;
+    bottom: 20px;
+    right: 20px;
+  }
+
+  .iconPosition {
+    font-size: 45px;
+    color: white;
+    color: #c81c1f;
+
+    &:hover {
+      color: $secondaryColor;
+    }
+  }
+
+  &:hover {
+    outline: none;
+    border-color: $secondaryColor;
+    box-shadow: 0 0 10px 0 $buttonColor inset, 0 0 10px 4px $buttonColor;
+    background-color: white;
+  }
+}
+
+#button.show {
+  transition: all 150ms ease-in-out;
+  opacity: 1;
+  visibility: visible;
+}

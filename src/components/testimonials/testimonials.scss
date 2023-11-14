@@ -1,0 +1,145 @@
+@import "../../global.scss";
+@import "../../style.scss";
+
+.testimonials {
+  @include themify($themes) {
+    min-height: calc(100dvh - $footerHeight - $navbarHeight);
+    position: relative;
+    z-index: 5;
+    background-color: themed("bg");
+
+    .testimonialsBg {
+      position: relative;
+      background-image: url("../../assets/Testimonial-bg.jpg");
+      background-repeat: repeat;
+      clip-path: polygon(
+        0 0,
+        100% 0,
+        100% calc(100% - (100% / tan(83deg))),
+        0 100%
+      );
+
+      @include respond(phone) {
+        clip-path: polygon(
+          0 0,
+          100% 0,
+          100% calc(100% - (100% / tan(87deg))),
+          0 100%
+        );
+      }
+
+      &::after {
+        content: "";
+        height: 60px;
+        width: 100%;
+        background: #313131;
+        position: absolute;
+        left: 0;
+        bottom: calc(100vw * 0.0225);
+        transform: skewY(356.75deg);
+        z-index: 3;
+      }
+
+      h1 {
+        color: white;
+        font-size: rem(52);
+        padding-bottom: rem(40);
+        margin-bottom: rem(40);
+        position: relative;
+        text-align: center;
+        padding-top: rem(120);
+
+        @include respond(tabPort) {
+          font-size: rem(42);
+        }
+
+        @include respond(phone) {
+          font-size: rem(35);
+        }
+
+        &::after {
+          content: "";
+          text-align: center;
+          position: absolute;
+          width: rem(100);
+          height: rem(20);
+          bottom: 0;
+          left: 50%;
+          transform: translate(-50%, 100%);
+          background-image: url("../../assets/RedCurvedLine.png");
+          background-repeat: no-repeat;
+          background-size: rem(100) auto;
+
+          @include respond(phone) {
+            background-size: rem(80) auto;
+          }
+        }
+      }
+
+      .slider {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        transition: all 0.5s ease-out;
+      }
+    }
+
+    .bottomSection {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      margin-top: rem(100);
+      color: themed("textColor");
+
+      p {
+        font-weight: 400;
+        text-align: center;
+        font-size: rem(25);
+        padding: 0 10px;
+
+        @include respond(tabPort) {
+          font-size: rem(22);
+        }
+      }
+
+      .redLineWrap {
+        margin: rem(40) 0 rem(100);
+
+        .redLine {
+          background: url("../../assets/RedCurvedLine.png") no-repeat;
+          height: rem(20);
+          width: rem(100);
+          background-size: rem(100) auto;
+          text-align: center;
+          left: 50%;
+          margin-left: rem(-50);
+          position: relative;
+          display: inline-block;
+          opacity: 0;
+
+          @include respond(phone) {
+            background-size: rem(80) auto;
+            margin-left: rem(-30);
+          }
+        }
+      }
+    }
+
+    @keyframes curvedRedLine {
+      from {
+        width: 0;
+      }
+      to {
+        width: rem(100);
+      }
+    }
+
+    .sideIn {
+      transform: translateX(0) !important ;
+      opacity: 1 !important;
+      animation: curvedRedLine ease-in-out 1s;
+    }
+  }
+}

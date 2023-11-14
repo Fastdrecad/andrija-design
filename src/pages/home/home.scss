@@ -1,0 +1,19 @@
+@import "../../global.scss";
+@import "../../style.scss";
+
+.homeSections {
+  @include themify($themes) {
+    width: 100%;
+    position: relative;
+    flex: 1 1 0%;
+    min-height: calc(100dvh - $footerHeight - $navbarHeight);
+    margin-top: $navbarHeight;
+    overflow: hidden;
+    color: themed(textColor);
+    z-index: 1;
+
+    @include respond(phone) {
+      margin-top: $navbarHeightMobile;
+    }
+  }
+}

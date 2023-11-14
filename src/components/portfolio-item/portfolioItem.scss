@@ -1,0 +1,83 @@
+@import "../../global.scss";
+@import "../../style.scss";
+
+/* Responsive image gallery rules begin*/
+.lwPortfolioItem {
+  position: relative;
+  cursor: pointer;
+  overflow: hidden;
+  border: none;
+  width: calc(100% / 4 - 15px);
+
+  @include respond(tabLand) {
+    width: calc(100% / 3 - 15px);
+  }
+
+  @include respond(tabPort) {
+    width: calc(100% / 2 - 15px);
+  }
+
+  @include respond(phone) {
+    width: calc(100% - 20px);
+    // width: 100%;
+  }
+
+  img {
+    aspect-ratio: 1.6 / 1;
+    width: 100%;
+    object-fit: cover;
+    vertical-align: middle;
+    transition: all 0.45s ease-in-out;
+  }
+
+  .overlay {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 0, 0, 0.715);
+    top: 0;
+    left: 0;
+    transform: scale(0);
+    transition: all 0.3s 0.1s ease-in-out;
+    color: white;
+    /* center overlay text */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+
+    h4 {
+      font-size: 18px;
+      font-weight: bold;
+      text-transform: uppercase;
+      margin: 0;
+      padding: 0;
+      transition: all 0.5s ease;
+    }
+
+    p {
+      transition: all 0.5s ease;
+      text-transform: capitalize;
+    }
+  }
+}
+
+/* hover */
+
+li:hover .overlay {
+  transform: scale(1);
+  box-shadow: 0px 0px 5px 4px rgba(0, 0, 0, 0.4);
+}
+li:hover img {
+  transform: scale(1.1);
+  box-shadow: 0px 0px 5px 4px rgba(0, 0, 0, 0.4);
+}
+
+li:hover .overlay h4 {
+  transform: translateY(-50%);
+}
+li:hover .overlay p {
+  text-align: center;
+  transform: translateY(150%);
+}

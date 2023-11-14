@@ -1,0 +1,20 @@
+@import "../../global.scss";
+@import "../../style.scss";
+
+.about {
+  @include themify($themes) {
+    position: relative;
+    flex: 1 1 0%;
+    min-height: calc(100dvh - $footerHeight - $navbarHeight);
+    background-color: themed("bg");
+    color: themed("textColor");
+    margin-top: $navbarHeight;
+    display: flex;
+    flex-direction: column;
+    overflow-x: hidden;
+
+    // @include mobile {
+    //   margin-top: 70px;
+    // }
+  }
+}

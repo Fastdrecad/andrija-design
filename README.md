@@ -41,9 +41,9 @@ Discover projects focused on storytelling, visualization, and presentation. This
 ## Setup
 
 ```
-1. Clone the repository: `git clone https://github.com/Fastdrecad/andrija-design.git`
-2. Navigate to the project directory: `cd andrija-design`
-3. Install dependencies: `npm install`
+git clone https://github.com/Fastdrecad/andrija-design.git
+cd andrija-design
+npm install
 ```
 
 ### Development
@@ -54,7 +54,7 @@ Run the development server:
 npm run dev
 ```
 
-Thank you for visiting my portfolio! I hope you enjoy exploring my work as much as I enjoyed creating it.
+Thank you for visiting my Portfolio Website! I hope you enjoy exploring my work as much as I enjoyed creating it.
 
 ## Connect with Andrija
 

@@ -15,18 +15,25 @@ import { AnimatePresence } from "framer-motion";
 function App() {
   const { darkMode } = useContext(DarkModeContext);
 
-  const [loaded, setLoaded] = useState(false);
+  const [loaded, setLoaded] = useState(true);
 
   useEffect(() => {
-    setTimeout(() => {
-      setLoaded(true);
-    }, 3000);
+    (async () => {
+      const LocomotiveScroll = (await import("locomotive-scroll")).default;
+      const locomotiveScroll = new LocomotiveScroll();
+
+      setTimeout(() => {
+        setLoaded(false);
+        document.body.style.cursor = "default";
+        window.scrollTo(0, 0);
+      }, 2000);
+    })();
   }, []);
 
   return (
     <div className={`theme-${darkMode ? "dark" : "light"} app`}>
       <Router>
-        <AnimatePresence>{loaded ? null : <Loader />}</AnimatePresence>
+        <AnimatePresence mode="wait">{loaded && <Loader />}</AnimatePresence>
         <NavigateToTop />
         <ComponentToHide>
           <Navbar />

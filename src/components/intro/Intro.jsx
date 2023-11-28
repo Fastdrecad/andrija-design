@@ -22,7 +22,7 @@ const Intro = () => {
     <div className="intro" id="intro">
       <div className="leftIntro">
         <div className="imgContainer">
-          <img src={imgHero} alt="" />
+          <img src={imgHero} alt="profile picture" />
         </div>
       </div>
       <div className="rightIntro">
@@ -34,10 +34,10 @@ const Intro = () => {
             <span ref={textRef}>Designer</span>
           </h3>
         </div>
-        <a href="#video">
-          <GoChevronDown className="arrowIntro" />
-        </a>
       </div>
+      <a href="#video">
+        <GoChevronDown className="arrowIntro" />
+      </a>
     </div>
   );
 };

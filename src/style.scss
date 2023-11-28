@@ -8,6 +8,10 @@
   }
 }
 
+body {
+  cursor: wait;
+}
+
 html {
   // This defines what 1rem is
   font-size: 67.5%; // this is the result of 10px/16px = 62.5%, 1rem = 10px
